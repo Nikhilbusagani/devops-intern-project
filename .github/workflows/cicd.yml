@@ -40,22 +40,7 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          debug: true
           script: |
-            echo "Connected user:"
-            whoami
-            echo "Current directory:"
-            pwd
-            echo "Listing home:"
-            ls /home/ubuntu
-
             cd /home/ubuntu/devops-intern-project
-
-            echo "Docker version:"
-            docker --version
-
-            echo "Docker Compose version:"
-            docker-compose --version || docker compose version
-
-            docker-compose pull || docker compose pull
-            docker-compose up -d || docker compose up -d
+            docker compose pull
+            docker compose up -d
